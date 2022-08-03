@@ -80,7 +80,7 @@ From NashvilleHousing
 order by ParcelID
 
 
--- See if a correct address is already givin for the same ParcelID shown Null value
+-- See if a correct address is already givin for the same ParcelID showing Null value
 Select a.ParcelID, a.PropertyAddress, b.ParcelID, b.PropertyAddress, ISNULL(a.PropertyAddress,b.PropertyAddress)
 From PortfolioProject.dbo.NashvilleHousing a
 JOIN PortfolioProject.dbo.NashvilleHousing b
@@ -209,7 +209,7 @@ SET SoldAsVacant = CASE When SoldAsVacant = 'Y' THEN 'Yes'
 
 -- Use CTE so we can put condition "where row_num > 1"
 WITH RowNumCTE AS(
-Select *,ROW_NUMBER() OVER (
+Select *, ROW_NUMBER() OVER (
 	                  PARTITION BY ParcelID,
 				                   PropertyAddress,
 				                   SalePrice,
